@@ -7,16 +7,16 @@ from spotipy.oauth2 import SpotifyOAuth
 
 
 
-# Replace with your own client ID and client secret
+#replace with your own client ID and client secret
 CLIENT_ID = 'Insert Client ID Here'
 CLIENT_SECRET = 'Insert Client Secret Here'
 REDIRECT_URI = 'http://localhost:5000/callback'  
 
 
-# Create a spotipy client with user authentication
+#create a spotipy client with user authentication
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, redirect_uri=REDIRECT_URI, scope="playlist-read-private"))
 
-# Get the playlist by name
+#get the playlist by name
 playlists = sp.current_user_playlists()
 playlist_id = None
 for playlist in playlists['items']:
@@ -25,11 +25,11 @@ for playlist in playlists['items']:
         break
 
 
-# Get the tracks in the playlist
+#get the tracks in the playlist
 tracks = sp.playlist_tracks(playlist_id)
 
 
-# Iterate through the tracks and print their names and artists
+#iterate through the tracks and print their names and artists
 trackDetails = []
 
 for item in tracks['items']:
